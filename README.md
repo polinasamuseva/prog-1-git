@@ -1,1 +1,1 @@
-# mans pirmais git projekts, yo!
+# Mans pirmais git projekts
