@@ -1,58 +1,19 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="lv">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>KLUS - Publiskā datubāze</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      margin: 20px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    th, td {
-      border: 1px solid #ccc;
-      padding: 8px;
-      text-align: left;
-    }
-
-    th {
-      background-color: #f0f0f0;
-    }
-
-    .button-like-link {
-      display: inline-block;
-      padding: 10px 20px;
-      margin: 10px;
-      background-color: #f0f0f0;
-      border: 1px solid #ccc;
-      text-decoration: none;
-      color: #333;
-      border-radius: 5px;
-    }
-
-    button {
-      margin: 5px;
-      padding: 10px 20px;
-    }
-  </style>
+  <title>Datu bāze | KLUS+</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <a href="index.html" class="button-like-link">Atpakaļ uz sākumlapu</a>
+  <a href="index.html" class="button-like-link">← Atpakaļ</a>
   <h1>Publiskā datubāze</h1>
-  <p>Šajā datubāzē Tu vari apskatīt pieejamās vielas un aprīkojumu.</p>
-
-  <button onclick="renderAll()">Rādīt visu</button>
-  <button onclick="renderVielas()">Rādīt vielas</button>
-  <button onclick="renderInventars()">Rādīt aprīkojumu</button>
-
+  <div>
+    <button onclick="renderAll()">Rādīt visu</button>
+    <button onclick="renderVielas()">Vielas</button>
+    <button onclick="renderInventars()">Inventārs</button>
+  </div>
   <table>
     <thead>
       <tr>
@@ -61,61 +22,12 @@
         <th>Tips</th>
         <th>Apakštips</th>
         <th>Skaits</th>
-        <th>Svars/Daudzums</th>
+        <th>Daudzums</th>
         <th>Komentāri</th>
       </tr>
     </thead>
-    <tbody id="data-table-body">
-    </tbody>
+    <tbody id="data-table-body"></tbody>
   </table>
-
-  <script>
-    const vielas = [
-      {"id":"2","nosaukums":"Kalcija karbonāts CaCO3","tips":"Viela","apakstips":"sāls","skaits":25,"svars":100,"komentari":""},
-      {"id":"3","nosaukums":"NaOH šķīdums 10%","tips":"Viela","apakstips":"hidroksīds","skaits":45,"svars":50,"komentari":"Šķīdums izvedots un sapildīts 2020.09.23"},
-      {"id":"4","nosaukums":"Sālsskābes HCl šķīdums 20%","tips":"Viela","apakstips":"skābe","skaits":24,"svars":100,"komentari":"Šķīdums izvedots un sapildīts 2020.10.21"}
-      // Var papildināt ar pārējiem vielu ierakstiem
-    ];
-
-    const inventars = [
-      {"id":"1","nosaukums":"Mehāniskie svari QWS","tips":"Aprīkojums","apakstips":"mehāniskie svari","skaits":5,"svars":"","komentari":""},
-      {"id":"2","nosaukums":"Elektroniskie svari ES-25","tips":"Aprīkojums","apakstips":"elektroniskie svari","skaits":15,"svars":"","komentari":"Darbojas uz 3 AAA tipa baterijām"},
-      {"id":"3","nosaukums":"Elektriskā plītīņa","tips":"Aprīkojums","apakstips":"plītiņa","skaits":8,"svars":"","komentari":"Strāvas vada garums 1m"}
-      // Var papildināt ar pārējiem inventāra ierakstiem
-    ];
-
-    function renderData(data) {
-      const tbody = document.getElementById("data-table-body");
-      tbody.innerHTML = "";
-      data.forEach(item => {
-        const row = `
-          <tr>
-            <td>${item.id}</td>
-            <td>${item.nosaukums}</td>
-            <td>${item.tips}</td>
-            <td>${item.apakstips}</td>
-            <td>${item.skaits}</td>
-            <td>${item.svars || item.daudzums || ""}</td>
-            <td>${item.komentari}</td>
-          </tr>`;
-        tbody.innerHTML += row;
-      });
-    }
-
-    function renderAll() {
-      renderData([...vielas, ...inventars]);
-    }
-
-    function renderVielas() {
-      renderData(vielas);
-    }
-
-    function renderInventars() {
-      renderData(inventars);
-    }
-
-    // Automātiski ielādēt visus pēc lapas atvēršanas
-    window.onload = renderAll;
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
